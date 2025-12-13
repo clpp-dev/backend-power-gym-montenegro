@@ -11,6 +11,12 @@ const clienteSchema = new mongoose.Schema({
     required: [true, 'El apellido es obligatorio'],
     trim: true
   },
+  cedula: {
+    type: String,
+    required: [true, 'La cédula es obligatoria'],
+    unique: true,
+    trim: true
+  },
   email: {
     type: String,
     required: [true, 'El email es obligatorio'],
@@ -47,9 +53,20 @@ const clienteSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Membresia'
   },
+  fechaInicioMembresia: {
+    type: Date
+  },
+  fechaFinMembresia: {
+    type: Date
+  },
   fechaInscripcion: {
     type: Date,
     default: Date.now
+  },
+  estado: {
+    type: String,
+    enum: ['Activo', 'Inactivo', 'Próximo a Vencer'],
+    default: 'Activo'
   },
   activo: {
     type: Boolean,

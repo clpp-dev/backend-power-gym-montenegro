@@ -7,6 +7,12 @@ const membresiaSchema = new mongoose.Schema({
     trim: true,
     unique: true
   },
+  tipo: {
+    type: String,
+    required: [true, 'El tipo de membresía es obligatorio'],
+    enum: ['Mensual', 'Trimestral', 'Semestral', 'Anual'],
+    default: 'Mensual'
+  },
   descripcion: {
     type: String,
     required: [true, 'La descripción es obligatoria'],

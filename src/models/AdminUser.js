@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const adminUserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: [true, 'El username es obligatorio'],
+    unique: true,
+    trim: true
+  },
   nombre: {
     type: String,
     required: [true, 'El nombre es obligatorio'],

@@ -35,21 +35,26 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
     {
       "_id": "60d5ec49f1b2c72b8c8e4a1b",
       "nombre": "Juan",
-      "apellido": "Pérez",
-      "email": "juan.perez@email.com",
-      "telefono": "+1234567890",
+      "apellido": "Martínez",
+      "cedula": "123456789",
+      "email": "juan.martinez@email.com",
+      "telefono": "321-123-3343",
       "fechaNacimiento": "1990-05-15T00:00:00.000Z",
       "direccion": "Calle Principal 123",
       "documento": {
         "tipo": "DNI",
-        "numero": "12345678"
+        "numero": "123456789"
       },
       "membresia": {
         "_id": "60d5ec49f1b2c72b8c8e4a1c",
-        "nombre": "Premium",
-        "precio": 45.00
+        "nombre": "Plan Full Access",
+        "tipo": "Mensual",
+        "precio": 350000
       },
-      "fechaInscripcion": "2024-01-10T00:00:00.000Z",
+      "fechaInicioMembresia": "2024-01-15T00:00:00.000Z",
+      "fechaFinMembresia": "2024-12-15T00:00:00.000Z",
+      "fechaInscripcion": "2024-01-15T00:00:00.000Z",
+      "estado": "Activo",
       "activo": true,
       "createdAt": "2024-01-10T10:30:00.000Z",
       "updatedAt": "2024-01-10T10:30:00.000Z"
@@ -115,21 +120,26 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
 {
   "nombre": "María",
   "apellido": "González",
+  "cedula": "87654321",
   "email": "maria.gonzalez@email.com",
-  "telefono": "+9876543210",
+  "telefono": "315-987-6543",
   "fechaNacimiento": "1995-08-20",
   "direccion": "Avenida Secundaria 456",
   "documento": {
-    "tipo": "DNI",
+    "tipo": "Cédula",
     "numero": "87654321"
   },
-  "membresia": "60d5ec49f1b2c72b8c8e4a1c"
+  "membresia": "60d5ec49f1b2c72b8c8e4a1c",
+  "fechaInicioMembresia": "2024-12-13",
+  "fechaFinMembresia": "2025-01-13",
+  "estado": "Activo"
 }
 ```
 
 **Campos requeridos:**
 - `nombre` (string)
 - `apellido` (string)
+- `cedula` (string, único)
 - `email` (string, único)
 - `telefono` (string)
 - `fechaNacimiento` (date)
@@ -139,6 +149,9 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
 - `direccion` (string)
 - `documento.tipo` (string: 'DNI', 'Pasaporte', 'Cédula') - Default: 'DNI'
 - `membresia` (ObjectId)
+- `fechaInicioMembresia` (date)
+- `fechaFinMembresia` (date)
+- `estado` (string: 'Activo', 'Inactivo', 'Próximo a Vencer') - Default: 'Activo'
 - `activo` (boolean) - Default: true
 
 **Respuesta exitosa (201):**
@@ -274,13 +287,15 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
   "data": [
     {
       "_id": "60d5ec49f1b2c72b8c8e4a1c",
-      "nombre": "Básica",
-      "descripcion": "Membresía básica con acceso al gimnasio",
-      "precio": 25.00,
+      "nombre": "Plan Full Access",
+      "tipo": "Mensual",
+      "descripcion": "Acceso completo a todas las instalaciones.",
+      "precio": 350000,
       "duracion": 30,
       "beneficios": [
-        "Acceso al gimnasio",
-        "Uso de equipamiento básico",
+        "Acceso ilimitado al gimnasio",
+        "Uso de todas las instalaciones",
+        "Clases grupales",
         "Casillero"
       ],
       "activo": true,
@@ -289,17 +304,15 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
     },
     {
       "_id": "60d5ec49f1b2c72b8c8e4a1d",
-      "nombre": "Premium",
-      "descripcion": "Membresía premium con todos los beneficios",
-      "precio": 45.00,
+      "nombre": "Plan Mañanas",
+      "tipo": "Mensual",
+      "descripcion": "Acceso solo en horario de mañana (6am - 3pm).",
+      "precio": 195000,
       "duracion": 30,
       "beneficios": [
-        "Acceso ilimitado al gimnasio",
-        "Uso de todas las instalaciones",
-        "Clases grupales",
-        "Casillero premium",
-        "Toalla incluida",
-        "1 sesión de entrenador personal"
+        "Acceso al gimnasio en horario de mañana",
+        "Uso de equipamiento básico",
+        "Casillero"
       ],
       "activo": true,
       "createdAt": "2024-01-01T00:00:00.000Z",
@@ -360,22 +373,24 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
 **Body (JSON):**
 ```json
 {
-  "nombre": "VIP",
-  "descripcion": "Membresía VIP con beneficios exclusivos",
-  "precio": 75.00,
-  "duracion": 30,
+  "nombre": "Plan Semestral",
+  "tipo": "Semestral",
+  "descripcion": "Membresía semestral con descuento especial",
+  "precio": 1800000,
+  "duracion": 180,
   "beneficios": [
-    "Acceso ilimitado 24/7",
-    "Entrenador personal dedicado",
-    "Nutricionista",
-    "Spa y sauna",
-    "Estacionamiento privado"
+    "Acceso ilimitado al gimnasio",
+    "Uso de todas las instalaciones",
+    "Clases grupales",
+    "Casillero premium",
+    "Descuento del 15%"
   ]
 }
 ```
 
 **Campos requeridos:**
 - `nombre` (string, único)
+- `tipo` (string: 'Mensual', 'Trimestral', 'Semestral', 'Anual')
 - `descripcion` (string)
 - `precio` (number, mínimo 0)
 - `duracion` (number, mínimo 1) - duración en días
@@ -582,9 +597,10 @@ curl -X POST http://localhost:5000/api/membresias \
 
 ## Usuario Administrador por Defecto
 
+**Username:** admin  
 **Email:** admin@powergym.com  
 **Password:** admin123  
-**Rol:** superadmin
+**Rol:** admin
 
 ---
 

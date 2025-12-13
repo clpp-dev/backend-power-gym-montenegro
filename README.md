@@ -90,9 +90,10 @@ backend-power-gym-montenegro/
 
 Después de ejecutar `npm run seed`, tendrás acceso a:
 
+- **Username:** admin
 - **Email:** admin@powergym.com
 - **Password:** admin123
-- **Rol:** superadmin
+- **Rol:** admin
 
 ## 📚 Endpoints Principales
 
@@ -119,6 +120,7 @@ Para más detalles sobre los endpoints, consultar [API_DOCUMENTATION.md](API_DOC
 {
   nombre: String (requerido),
   apellido: String (requerido),
+  cedula: String (requerido, único),
   email: String (requerido, único),
   telefono: String (requerido),
   fechaNacimiento: Date (requerido),
@@ -128,7 +130,10 @@ Para más detalles sobre los endpoints, consultar [API_DOCUMENTATION.md](API_DOC
     numero: String (requerido, único)
   },
   membresia: ObjectId (referencia a Membresia),
+  fechaInicioMembresia: Date,
+  fechaFinMembresia: Date,
   fechaInscripcion: Date,
+  estado: String (Activo, Inactivo, Próximo a Vencer),
   activo: Boolean
 }
 ```
@@ -137,6 +142,7 @@ Para más detalles sobre los endpoints, consultar [API_DOCUMENTATION.md](API_DOC
 ```javascript
 {
   nombre: String (requerido, único),
+  tipo: String (Mensual, Trimestral, Semestral, Anual),
   descripcion: String (requerido),
   precio: Number (requerido),
   duracion: Number (requerido, en días),
@@ -148,6 +154,7 @@ Para más detalles sobre los endpoints, consultar [API_DOCUMENTATION.md](API_DOC
 ### AdminUser
 ```javascript
 {
+  username: String (requerido, único),
   nombre: String (requerido),
   email: String (requerido, único),
   password: String (requerido),
