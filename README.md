@@ -37,7 +37,7 @@ npm install
 El archivo `.env` ya está configurado con:
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://clperez341:*crisandresPS4*@clusterpowergymmonteneg.zebsns3.mongodb.net/?appName=ClusterPowerGymMontenegro
+MONGODB_URI=example
 ```
 
 4. Ejecutar el seed para crear el usuario administrador y datos de ejemplo:

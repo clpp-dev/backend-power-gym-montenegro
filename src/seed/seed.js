@@ -60,10 +60,7 @@ const membresiasData = [
 const seedDatabase = async () => {
   try {
     // Conectar a la base de datos
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGODB_URI);
     
     console.log('Conectado a MongoDB');
 
