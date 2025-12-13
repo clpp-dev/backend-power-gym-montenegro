@@ -14,8 +14,60 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
 ## Endpoints Disponibles
 
 ### 📋 Índice
+- [Autenticación](#autenticación)
 - [Clientes](#clientes)
 - [Membresías](#membresías)
+
+---
+
+## Autenticación
+
+### Login de Administrador
+**POST** `/api/login`
+
+**Descripción:** Autentica un usuario administrador en el sistema.
+
+**Body (JSON):**
+```json
+{
+  "username": "admin",
+  "password": "admin123"
+}
+```
+
+**Nota:** Puedes usar el `username` o el `email` para hacer login.
+
+**Respuesta exitosa (200):**
+```json
+{
+  "success": true,
+  "message": "Login exitoso",
+  "data": {
+    "_id": "60d5ec49f1b2c72b8c8e4a1a",
+    "username": "admin",
+    "nombre": "Admin",
+    "email": "admin@powergym.com",
+    "rol": "admin",
+    "activo": true
+  }
+}
+```
+
+**Respuesta de error (401):**
+```json
+{
+  "success": false,
+  "message": "Credenciales inválidas"
+}
+```
+
+**Respuesta de error (400):**
+```json
+{
+  "success": false,
+  "message": "Por favor proporcione username y password"
+}
+```
 
 ---
 
@@ -530,6 +582,16 @@ Esta API permite gestionar clientes y membresías del gimnasio Power Gym Montene
 ---
 
 ## Ejemplos de Uso con cURL
+
+### Login de administrador
+```bash
+curl -X POST http://localhost:5000/api/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "admin",
+    "password": "admin123"
+  }'
+```
 
 ### Obtener todos los clientes
 ```bash

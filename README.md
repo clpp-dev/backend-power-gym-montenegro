@@ -97,6 +97,9 @@ Después de ejecutar `npm run seed`, tendrás acceso a:
 
 ## 📚 Endpoints Principales
 
+### Autenticación
+- `POST /api/login` - Login de administrador
+
 ### Clientes
 - `GET /api/clientes` - Obtener todos los clientes
 - `GET /api/clientes/:id` - Obtener un cliente específico

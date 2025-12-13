@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/database');
 
 // Importar rutas
+const authRoutes = require('./routes/adminRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
 const membresiaRoutes = require('./routes/membresiaRoutes');
 
@@ -23,12 +24,14 @@ app.get('/', (req, res) => {
     message: 'API Power Gym Montenegro',
     version: '1.0.0',
     endpoints: {
+      login: '/api/login',
       clientes: '/api/clientes',
       membresias: '/api/membresias'
     }
   });
 });
 
+app.use('/api', authRoutes);
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/membresias', membresiaRoutes);
 
