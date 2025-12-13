@@ -1,0 +1,32 @@
+{
+  "name": "backend-power-gym-montenegro",
+  "version": "1.0.0",
+  "description": "Backend API para Power Gym Montenegro - Sistema de gestión de clientes y membresías",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "seed": "node src/seed/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clpp-dev/backend-power-gym-montenegro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/clpp-dev/backend-power-gym-montenegro/issues"
+  },
+  "homepage": "https://github.com/clpp-dev/backend-power-gym-montenegro#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
