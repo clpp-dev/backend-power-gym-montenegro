@@ -178,6 +178,7 @@ Para más detalles sobre los endpoints, consultar [API_DOCUMENTATION.md](API_DOC
 - `npm start` - Inicia el servidor en modo producción
 - `npm run dev` - Inicia el servidor en modo desarrollo con nodemon
 - `npm run seed` - Ejecuta el script de seed para poblar la base de datos
+- `npm run reset` - Resetea (limpia) la base de datos eliminando todos los datos
 
 ## 🤝 Contribución
 

@@ -110,6 +110,10 @@ const seedDatabase = async () => {
           telefono: '321-123-3343',
           fechaNacimiento: '1990-05-15',
           fechaInscripcion: '2024-01-15',
+          documento: {
+            tipo: 'Cédula',
+            numero: '123456789'
+          },
           estado: 'Activo',
           membresia: membresiasCreadas[0]._id,
           fechaInicioMembresia: '2024-01-15',
@@ -124,6 +128,10 @@ const seedDatabase = async () => {
           telefono: '311-567-5424',
           fechaNacimiento: '1985-08-20',
           fechaInscripcion: '2023-06-20',
+          documento: {
+            tipo: 'Cédula',
+            numero: '987654321'
+          },
           estado: 'Inactivo',
           membresia: null,
           activo: false
@@ -136,6 +144,10 @@ const seedDatabase = async () => {
           telefono: '315-345-3415',
           fechaNacimiento: '1992-03-10',
           fechaInscripcion: '2024-03-10',
+          documento: {
+            tipo: 'Cédula',
+            numero: '456655333'
+          },
           estado: 'Próximo a Vencer',
           membresia: membresiasCreadas[1]._id,
           fechaInicioMembresia: '2024-03-10',

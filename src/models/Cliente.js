@@ -41,12 +41,11 @@ const clienteSchema = new mongoose.Schema({
     tipo: {
       type: String,
       enum: ['DNI', 'Pasaporte', 'Cédula'],
-      default: 'DNI'
+      default: 'Cédula'
     },
     numero: {
       type: String,
-      required: [true, 'El número de documento es obligatorio'],
-      unique: true
+      trim: true
     }
   },
   membresia: {
